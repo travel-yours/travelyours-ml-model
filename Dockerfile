@@ -13,5 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
 
+EXPOSE 8080
 # Menjalankan aplikasi Python
 CMD ["python", "app.py"]
