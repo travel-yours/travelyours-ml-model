@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect
 import tensorflow as tf
 import numpy as np
 import os
@@ -45,7 +45,23 @@ def predicts():
         imageCamera.save(file_path)
         predictions = model_predict(file_path, model)
 
-        test_labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        test_labels = ["647a94e9066891e6d6b9fcad",
+                       "647ab21fc2b29a1e07d90855",
+                       "647ab354c2b29a1e07d90858",
+                       "647ab91f9f8ccada06b1b475",
+                       "647b72c6abf8c758f2bf4325",
+                       "647ca178d681d9032d5d63db",
+                       "647ca296d681d9032d5d63dd",
+                       "647ca329789e7a9317ac1356",
+                       "647ca456d681d9032d5d63df",
+                       "647ca59cd681d9032d5d63e1",
+                       "647caa51e853d9aaccbf0fbd",
+                       "647cab24e853d9aaccbf0fc2",
+                       "647cabd6e853d9aaccbf0fc4",
+                       "647cacb1e853d9aaccbf0fc6",
+                       "647cada3e853d9aaccbf0fc8",
+                       "647cae11e853d9aaccbf0fca"]
+        
         test_labels_text = [
             'borobudur',
             'jendral_sudirman',
@@ -67,8 +83,10 @@ def predicts():
         pred_class_index = np.argmax(predictions)
         result = test_labels[pred_class_index]
         result_name = test_labels_text[pred_class_index]
-        response = {"uid": result, "name": result_name}
-        return jsonify(response)
+
+        destination_url = f"https://travelyours-api-4zcm2uhcpq-as.a.run.app/destination/{result}"
+
+        return redirect(destination_url)
 
 
 if __name__ == '__main__':
