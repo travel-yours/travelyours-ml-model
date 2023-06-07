@@ -121,8 +121,9 @@ testing accuracy = 0.5333333333333333
 
 ![1685321690558](image/model_evaluatiion/1685321690558.png)
 
-
 ### Percobaan 6
+
+Nama model = model7.h5
 
 Kondisi: 200 kali **augmentasi**, 200 **epoch**, loss function categorical crosssentropy dan Optimizer **RMSprop (lr = 1e-4))**.
 
@@ -130,10 +131,33 @@ Didapatkan hasil:
 
 val_loss 0.2xxx,	val_acc = 9.4xxx,
 
-testing accuracy = 0.7575757575757576
+Testing Accuracy:  0.9636363636363636
+Total True Predictions:  265
+Total False Predictions:  10
 
 Dengan gambaran sebagai berikut:
 
 ![1685428675908](image/model_evaluatiion/1685428675908.png)
 
 ![1685428702665](image/model_evaluatiion/1685428702665.png)
+
+
+### Percobaan 7
+
+Nama model = model15.h5
+
+Kondisi: 200 kali **augmentasi**, 250 **epoch**, loss function categorical crosssentropy dan Optimizer **RMSprop (lr = 1e-4))**.
+
+Didapatkan hasil:
+
+val_loss 0.4xxx,	val_acc = 0.91xxx,
+
+Accuracy:  0.8981818181818182
+Total True Predictions:  247
+Total False Predictions:  28
+
+Dengan gambaran sebagai berikut:
+
+![1686034513151](image/model_evaluatiion/1686034513151.png)
+
+![1686034650031](image/model_evaluatiion/1686034650031.png)
