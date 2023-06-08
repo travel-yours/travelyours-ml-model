@@ -19,13 +19,14 @@ model = tf.keras.models.load_model(model_path)
 
 
 def model_predict(img_path, model):
-    image = tf.keras.preprocessing.image.load_img(
-        img_path, target_size=(150, 150))
+    image = tf.keras.preprocessing.image.load_img(img_path)
     image_array = tf.keras.preprocessing.image.img_to_array(image)
-    image_array = image_array / 255.0
+    image_array = image_array / 255.0  # Normalisasi
+    image_array = tf.image.resize(image_array, (150, 150))  # Resize
     input_data = tf.expand_dims(image_array, axis=0)
     predictions = model.predict(input_data)
     return predictions
+
 
 
 @app.route('/', methods=['GET'])
@@ -81,8 +82,11 @@ def predicts():
             'tugu_jogja',
         ]
         pred_class_index = np.argmax(predictions)
-        result = test_labels[pred_class_index]
-        result_name = test_labels_text[pred_class_index]
+        if predictions[0][pred_class_index] > 0.7:
+            result = test_labels[pred_class_index]
+            result_name = test_labels_text[pred_class_index]
+        else:
+            result = "Maaf, hasil belum tersedia"
 
         destination_url = f"https://travelyours-api-4zcm2uhcpq-as.a.run.app/destination/{result}"
 
