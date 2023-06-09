@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 # Load model from H5 file
-model = load_model('./travelyours-ml-model/models/model7.h5')
+model = load_model('./travelyours-ml-model/TLmodelv2.h5')
 
 # Function to perform object detection on live camera feed
 def detect_objects():
@@ -58,7 +58,7 @@ def detect_objects():
 
         # Get the predicted label
         pred_class_index = np.argmax(prediction)
-        if prediction[0][pred_class_index] > 0.7:
+        if prediction[0][pred_class_index] > 0.5:
             result = test_labels[pred_class_index]
         else:
             result = "Tidak ada di database"
