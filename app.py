@@ -86,7 +86,8 @@ def predicts():
             result = test_labels[pred_class_index]
             result_name = test_labels_text[pred_class_index]
         else:
-            result = "Maaf, hasil belum tersedia"
+            result = ""
+            result_name = "Maaf, hasil belum tersedia"
 
         destination_url = f"https://travelyours-api-4zcm2uhcpq-as.a.run.app/destination/{result}"
 
